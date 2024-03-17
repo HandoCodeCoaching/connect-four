@@ -37,7 +37,7 @@ class ConnectFour {
   // Return false if the game has not ended
 
   placeMove = () => {
-    if(Screen.grid[this.cursor.row][this.cursor.col] === " ") {
+    if (Screen.grid[this.cursor.row][this.cursor.col] === " ") {
       Screen.setTextColor(this.cursor.row, this.cursor.col, 'white');
       Screen.setGrid(this.row, this.col, this.playerTurn);
       Screen.render()

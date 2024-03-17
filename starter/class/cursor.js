@@ -22,8 +22,8 @@ class Cursor {
   }
 
   up = () => {
-    this.resetBackgroundColor();
     if (this.row != 0) {
+      this.resetBackgroundColor();
       this.row -=1
       this.setBackgroundColor();
       Screen.render();
@@ -32,8 +32,8 @@ class Cursor {
   }
 
   down = () => {
-    this.resetBackgroundColor();
     if (this.row != this.numRows - 1) {
+      this.resetBackgroundColor();
       this.row += 1
       this.setBackgroundColor();
       Screen.render();
@@ -42,8 +42,8 @@ class Cursor {
   }
 
   left = () => {
-    this.resetBackgroundColor();
     if (this.col != 0) {
+      this.resetBackgroundColor();
       this.col -= 1
       this.setBackgroundColor();
       Screen.render()
@@ -51,9 +51,9 @@ class Cursor {
     return false
   }
 
-  right = () => {
-    this.resetBackgroundColor();
+  right = () => {  
     if (this.col != this.numCols - 1) {
+      this.resetBackgroundColor(); 
       this.col += 1
       this.setBackgroundColor();
       Screen.render();

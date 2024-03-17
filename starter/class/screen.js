@@ -95,7 +95,6 @@ class Screen {
     Screen.grid[row][col] = char;
   }
 
-
   static addCommand(key, description, action) {
 
     if (key === 'q') {
