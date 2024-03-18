@@ -19,15 +19,17 @@ class ConnectFour {
     // Initialize a 6x7 connect-four grid
     Screen.initialize(6, 7);
     Screen.setGridlines(true);
+    // this.cursor.setCursor(this.cursor.numRows)
 
     // Replace this with real commands
     // Screen.addCommand('t', 'test command (remove)', ConnectFour.testCommand);
     Screen.addCommand('up', 'moves cursor up', this.cursor.up);
-    Screen.addCommand('Down', 'moves cursor down', this.cursor.down);
+    Screen.addCommand('down', 'moves cursor down', this.cursor.down);
     Screen.addCommand('left', 'move cursor left', this.cursor.left);
     Screen.addCommand('right', 'moves cursor right', this.cursor.right);
     Screen.addCommand('return', "places a move in the current position", this.placeMove)
-
+    
+    this.cursor.setCursor(this.cursor.numRows)
     this.cursor.setBackgroundColor();
     Screen.render();
   }
@@ -39,10 +41,15 @@ class ConnectFour {
   placeMove = () => {
     if (Screen.grid[this.cursor.row][this.cursor.col] === " ") {
       Screen.setTextColor(this.cursor.row, this.cursor.col, 'white');
-      Screen.setGrid(this.row, this.col, this.playerTurn);
+      Screen.setGrid(this.cursor.row, this.cursor.col, this.playerTurn);
       Screen.render()
-      if (Cursor.checkWin(Screen.grid)) {
-        Cursor.endGame(Cursor.checkWin(Screen.grid));
+      if (this.playerTurn === "O") {
+        this.playerTurn = "X"
+      } else {
+        this.playerTurn = "O"
+      }
+      if (ConnectFour.checkWin(Screen.grid)) {
+        ConnectFour.endGame(ConnectFour.checkWin(Screen.grid));
       }
     }
   }
@@ -116,7 +123,6 @@ class ConnectFour {
     Screen.render();
     Screen.quit();
   }
-
 }
 
 module.exports = ConnectFour;

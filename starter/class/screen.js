@@ -100,12 +100,8 @@ class Screen {
     if (key === 'q') {
       throw new Error("you cannot overwrite 'q'");
     }
-
     Screen.commands[key] = new Command(key, description, action);
   }
-
-
-
 
   static setQuitMessage(quitMessage) {
     Screen.quitMessage = quitMessage;
