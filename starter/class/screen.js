@@ -91,21 +91,17 @@ class Screen {
     if (char.length !== 1) {
       throw new Error("invalid grid character");
     }
+    console.log(row, col, char)
     Screen.grid[row][col] = char;
   }
-
 
   static addCommand(key, description, action) {
 
     if (key === 'q') {
       throw new Error("you cannot overwrite 'q'");
     }
-
     Screen.commands[key] = new Command(key, description, action);
   }
-
-
-
 
   static setQuitMessage(quitMessage) {
     Screen.quitMessage = quitMessage;

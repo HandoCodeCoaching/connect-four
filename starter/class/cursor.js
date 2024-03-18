@@ -2,16 +2,25 @@ const Screen = require("./screen");
 
 class Cursor {
 
-  constructor(numRows, numCols) {
+  constructor(numRows, numCols, startRow, startCol) {
     this.numRows = numRows;
     this.numCols = numCols;
+
+    // this.startingPosRow = 6
+    // this.startPosCol = 0
+    this.startRow = startRow;
+    this.startCol = startCol;
 
     this.row = 0;
     this.col = 0;
 
     this.gridColor = 'black';
     this.cursorColor = 'yellow';
+  }
 
+  setCursor(rows) {
+    this.row = rows - 1;
+    this.col = 0
   }
 
   resetBackgroundColor() {
@@ -22,14 +31,46 @@ class Cursor {
     Screen.setBackgroundColor(this.row, this.col, this.cursorColor);
   }
 
-  left() {
-    // Move cursor left
+  up = () => {
+
+    if (this.row != 0) {
+      this.resetBackgroundColor();
+      this.row -=1
+      this.setBackgroundColor();
+      Screen.render();
+    }
+    return false
   }
 
-  right() {
-    // Move cursor right
+  down = () => {
+    if (this.row != this.numRows - 1) {
+      this.resetBackgroundColor();
+      this.row += 1
+      this.setBackgroundColor();
+      Screen.render();
+    }
+    return false
   }
 
+  left = () => {
+    if (this.col != 0) {
+      this.resetBackgroundColor();
+      this.col -= 1
+      this.setBackgroundColor();
+      Screen.render()
+    }
+    return false
+  }
+
+  right = () => {  
+    if (this.col != this.numCols - 1) {
+      this.resetBackgroundColor(); 
+      this.col += 1
+      this.setBackgroundColor();
+      Screen.render();
+    }
+    return false
+  }
 }
 
 
